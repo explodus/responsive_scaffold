@@ -13,7 +13,8 @@ class ResponsiveScaffold extends StatelessWidget {
     this.endIcon,
     this.kTabletBreakpoint = 720.0,
     this.kDesktopBreakpoint = 1440.0,
-    this.appBarElevation,
+    this.appBar,
+    this.appBarElevation = 0.0,
   });
 
   final Widget drawer, endDrawer;
@@ -25,6 +26,8 @@ class ResponsiveScaffold extends StatelessWidget {
   final Widget trailing;
 
   final Widget floatingActionButton;
+
+  final Widget appBar;
 
   final kTabletBreakpoint;
   final kDesktopBreakpoint;
@@ -59,16 +62,18 @@ class ResponsiveScaffold extends StatelessWidget {
                     Expanded(
                       child: Scaffold(
                         key: scaffoldKey,
-                        appBar: AppBar(
-                          elevation: appBarElevation,
-                          automaticallyImplyLeading: false,
-                          title: title,
-                          actions: <Widget>[
-                            if (trailing != null) ...[
-                              trailing,
-                            ],
-                          ],
-                        ),
+                        appBar: appBar != null
+                            ? appBar
+                            : AppBar(
+                                elevation: appBarElevation,
+                                automaticallyImplyLeading: false,
+                                title: title,
+                                actions: <Widget>[
+                                  if (trailing != null) ...[
+                                    trailing,
+                                  ],
+                                ],
+                              ),
                         body: Row(
                           children: <Widget>[
                             Expanded(
