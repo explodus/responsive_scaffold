@@ -238,7 +238,10 @@ class _MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(iconData ?? Icons.menu),
+      icon: Icon(
+        iconData ?? Icons.menu,
+        color: Theme.of(context).primaryColor,
+      ),
       onPressed: () {
         Scaffold.of(context).openDrawer();
       },
