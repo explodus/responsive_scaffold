@@ -13,7 +13,7 @@ class ResponsiveScaffold extends StatelessWidget {
     this.endIcon,
     this.kTabletBreakpoint = 720.0,
     this.kDesktopBreakpoint = 1440.0,
-    this.appBar,
+    this.appBarBackgroundColor,
     this.appBarElevation = 0.0,
   });
 
@@ -27,7 +27,7 @@ class ResponsiveScaffold extends StatelessWidget {
 
   final Widget floatingActionButton;
 
-  final Widget appBar;
+  final Color appBarBackgroundColor;
 
   final kTabletBreakpoint;
   final kDesktopBreakpoint;
@@ -41,6 +41,11 @@ class ResponsiveScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color appBarBackgroundColorLocal = appBarBackgroundColor ??
+        (Theme.of(context).brightness == Brightness.dark
+            ? Theme.of(context).scaffoldBackgroundColor
+            : Theme.of(context).primaryColor);
+
     return LayoutBuilder(
       builder: (_, constraints) {
         if (constraints.maxWidth >= kDesktopBreakpoint) {
@@ -62,18 +67,17 @@ class ResponsiveScaffold extends StatelessWidget {
                     Expanded(
                       child: Scaffold(
                         key: scaffoldKey,
-                        appBar: appBar != null
-                            ? appBar
-                            : AppBar(
-                                elevation: appBarElevation,
-                                automaticallyImplyLeading: false,
-                                title: title,
-                                actions: <Widget>[
-                                  if (trailing != null) ...[
-                                    trailing,
-                                  ],
-                                ],
-                              ),
+                        appBar: AppBar(
+                          backgroundColor: appBarBackgroundColorLocal,
+                          elevation: appBarElevation,
+                          automaticallyImplyLeading: false,
+                          title: title,
+                          actions: <Widget>[
+                            if (trailing != null) ...[
+                              trailing,
+                            ],
+                          ],
+                        ),
                         body: Row(
                           children: <Widget>[
                             Expanded(
@@ -118,6 +122,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     ),
                   ),
             appBar: AppBar(
+              backgroundColor: appBarBackgroundColorLocal,
               elevation: appBarElevation,
               automaticallyImplyLeading: false,
               title: title,
@@ -180,6 +185,7 @@ class ResponsiveScaffold extends StatelessWidget {
                   ),
                 ),
           appBar: AppBar(
+            backgroundColor: appBarBackgroundColorLocal,
             elevation: appBarElevation,
             automaticallyImplyLeading: false,
             leading: _MenuButton(iconData: menuIcon),
