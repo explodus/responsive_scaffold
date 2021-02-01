@@ -26,7 +26,6 @@ class ResponsiveListScaffold extends StatelessWidget {
     this.floatingActionButtonLocation,
     this.persistentFooterButtons,
     this.resizeToAvoidBottomInset,
-    this.resizeToAvoidBottomPadding,
     this.tabletItemNotSelected,
     this.tabletSideMenu,
     this.nullItems,
@@ -66,7 +65,6 @@ class ResponsiveListScaffold extends StatelessWidget {
     this.floatingActionButtonLocation,
     this.persistentFooterButtons,
     this.resizeToAvoidBottomInset,
-    this.resizeToAvoidBottomPadding,
     this.tabletItemNotSelected,
     this.tabletSideMenu,
     this.tabletFlexDetailView = 8,
@@ -104,7 +102,6 @@ class ResponsiveListScaffold extends StatelessWidget {
     this.floatingActionButtonLocation,
     this.persistentFooterButtons,
     this.resizeToAvoidBottomInset,
-    this.resizeToAvoidBottomPadding,
     this.tabletItemNotSelected,
     this.tabletSideMenu,
     this.tabletFlexDetailView = 8,
@@ -136,8 +133,6 @@ class ResponsiveListScaffold extends StatelessWidget {
   final List<Widget> persistentFooterButtons;
 
   final FloatingActionButtonAnimator floatingActionButtonAnimator;
-
-  final bool resizeToAvoidBottomPadding;
 
   final bool resizeToAvoidBottomInset;
 
@@ -187,7 +182,6 @@ class ResponsiveListScaffold extends StatelessWidget {
             persistentFooterButtons: persistentFooterButtons,
             floatingActionButtonAnimator: floatingActionButtonAnimator,
             resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-            resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
             primary: primary,
             // extendBody: extendBody,
             backgroundColor: backgroundColor,
@@ -214,7 +208,6 @@ class ResponsiveListScaffold extends StatelessWidget {
           persistentFooterButtons: persistentFooterButtons,
           floatingActionButtonAnimator: floatingActionButtonAnimator,
           resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-          resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
           primary: primary,
           // extendBody: extendBody,
           backgroundColor: backgroundColor,
@@ -237,5 +230,4 @@ class ResponsiveListScaffold extends StatelessWidget {
   }
 }
 
-typedef DetailWidgetBuilder = DetailsScreen Function(
-    BuildContext context, int index, bool tablet);
+typedef DetailWidgetBuilder = DetailsScreen Function(BuildContext context, int index, bool tablet);

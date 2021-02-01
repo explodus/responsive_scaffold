@@ -27,7 +27,6 @@ class TabletView extends StatefulWidget {
     @required this.persistentFooterButtons,
     @required this.primary,
     @required this.resizeToAvoidBottomInset,
-    @required this.resizeToAvoidBottomPadding,
     @required this.scaffoldkey,
     @required this.detailScaffoldKey,
     @required this.nullItems,
@@ -63,7 +62,6 @@ class TabletView extends StatefulWidget {
     @required this.persistentFooterButtons,
     @required this.primary,
     @required this.resizeToAvoidBottomInset,
-    @required this.resizeToAvoidBottomPadding,
     @required this.scaffoldkey,
     @required this.detailScaffoldKey,
     @required this.nullItems,
@@ -99,7 +97,6 @@ class TabletView extends StatefulWidget {
     @required this.persistentFooterButtons,
     @required this.primary,
     @required this.resizeToAvoidBottomInset,
-    @required this.resizeToAvoidBottomPadding,
     @required this.scaffoldkey,
     @required this.detailScaffoldKey,
     @required this.nullItems,
@@ -125,8 +122,6 @@ class TabletView extends StatefulWidget {
   final List<Widget> persistentFooterButtons;
 
   final FloatingActionButtonAnimator floatingActionButtonAnimator;
-
-  final bool resizeToAvoidBottomPadding;
 
   final bool resizeToAvoidBottomInset;
 
@@ -177,15 +172,12 @@ class _TabletViewState extends State<TabletView> {
             child: Scaffold(
               key: widget?.scaffoldkey,
               floatingActionButton: widget?.floatingActionButton,
-              floatingActionButtonLocation:
-                  widget?.floatingActionButtonLocation,
+              floatingActionButtonLocation: widget?.floatingActionButtonLocation,
               bottomNavigationBar: widget?.bottomNavigationBar,
               bottomSheet: widget?.bottomSheet,
               persistentFooterButtons: widget?.persistentFooterButtons,
-              floatingActionButtonAnimator:
-                  widget?.floatingActionButtonAnimator,
+              floatingActionButtonAnimator: widget?.floatingActionButtonAnimator,
               resizeToAvoidBottomInset: widget?.resizeToAvoidBottomInset,
-              resizeToAvoidBottomPadding: widget?.resizeToAvoidBottomPadding,
               primary: widget?.primary,
               // extendBody: extendBody,
               backgroundColor: widget?.backgroundColor,
@@ -197,15 +189,12 @@ class _TabletViewState extends State<TabletView> {
                   ..addAll(widget.slivers ?? [])
                   ..add(Builder(
                     builder: (BuildContext context) {
-                      SliverChildDelegate _childDelagate =
-                          widget?.childDelagate;
-                      if (_childDelagate?.estimatedChildCount == null &&
-                          widget?.nullItems != null)
+                      SliverChildDelegate _childDelagate = widget?.childDelagate;
+                      if (_childDelagate?.estimatedChildCount == null && widget?.nullItems != null)
                         return SliverFillRemaining(child: widget.nullItems);
                       if (_childDelagate?.estimatedChildCount != null &&
                           _childDelagate.estimatedChildCount == 0 &&
-                          widget?.emptyItems != null)
-                        return SliverFillRemaining(child: widget.emptyItems);
+                          widget?.emptyItems != null) return SliverFillRemaining(child: widget.emptyItems);
                       return SliverList(
                           delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
@@ -220,13 +209,8 @@ class _TabletViewState extends State<TabletView> {
                                   });
                                 },
                                 child: new Container(
-                                  color: _index == index
-                                      ? Theme.of(context)
-                                          .chipTheme
-                                          .disabledColor
-                                      : widget?.backgroundColor,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  color: _index == index ? Theme.of(context).chipTheme.disabledColor : widget?.backgroundColor,
+                                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                                   child: _childDelagate.build(context, index),
                                 ),
                               ),
@@ -247,8 +231,7 @@ class _TabletViewState extends State<TabletView> {
             flex: widget.flexDetailView,
             child: new _DetailView(
               detailScaffoldKey: widget?.detailScaffoldKey,
-              details: _index == null ||
-                      _index > widget.childDelagate.estimatedChildCount - 1
+              details: _index == null || _index > widget.childDelagate.estimatedChildCount - 1
                   ? null
                   : widget.detailBuilder(context, _index, true),
               itemNotSelected: widget?.itemNotSelected,
