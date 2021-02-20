@@ -219,7 +219,10 @@ class _OptionsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(iconData ?? Icons.more_vert),
+      icon: Icon(
+        iconData ?? Icons.more_vert,
+        color: Theme.of(context).primaryColor,
+      ),
       onPressed: () {
         Scaffold.of(context).openEndDrawer();
       },
