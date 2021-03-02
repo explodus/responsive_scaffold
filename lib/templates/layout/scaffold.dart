@@ -8,6 +8,7 @@ class ResponsiveScaffold extends StatelessWidget {
     this.title,
     this.body,
     this.trailing,
+    this.appBar,
     this.floatingActionButton,
     this.menuIcon,
     this.endIcon,
@@ -20,6 +21,8 @@ class ResponsiveScaffold extends StatelessWidget {
   final Widget drawer, endDrawer;
 
   final Widget title;
+  
+  final AppBar appBar;
 
   final Widget body;
 
@@ -67,7 +70,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     Expanded(
                       child: Scaffold(
                         key: scaffoldKey,
-                        appBar: AppBar(
+                        appBar: appBar != null ? appBar : AppBar(
                           backgroundColor: appBarBackgroundColorLocal,
                           elevation: appBarElevation,
                           automaticallyImplyLeading: false,
@@ -121,7 +124,7 @@ class ResponsiveScaffold extends StatelessWidget {
                       child: drawer,
                     ),
                   ),
-            appBar: AppBar(
+            appBar: appBar != null ? appBar : AppBar(
               backgroundColor: appBarBackgroundColorLocal,
               elevation: appBarElevation,
               automaticallyImplyLeading: false,
@@ -184,7 +187,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     child: endDrawer,
                   ),
                 ),
-          appBar: AppBar(
+          appBar: appBar != null ? appBar : AppBar(
             backgroundColor: appBarBackgroundColorLocal,
             elevation: appBarElevation,
             automaticallyImplyLeading: false,
