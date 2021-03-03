@@ -15,13 +15,19 @@ class ResponsiveScaffold extends StatelessWidget {
     this.kDesktopBreakpoint = 1440.0,
     this.appBarBackgroundColor,
     this.appBarElevation = 0.0,
+    this.appBar,
+    this.bottomNavigationBar,
   });
 
   final Widget drawer, endDrawer;
 
   final Widget title;
 
+  final Widget bottomNavigationBar;
+
   final Widget body;
+
+  final Widget appBar;
 
   final Widget trailing;
 
@@ -66,18 +72,21 @@ class ResponsiveScaffold extends StatelessWidget {
                     ],
                     Expanded(
                       child: Scaffold(
+                        bottomNavigationBar: bottomNavigationBar,
                         key: scaffoldKey,
-                        appBar: AppBar(
-                          backgroundColor: appBarBackgroundColorLocal,
-                          elevation: appBarElevation,
-                          automaticallyImplyLeading: false,
-                          title: title,
-                          actions: <Widget>[
-                            if (trailing != null) ...[
-                              trailing,
-                            ],
-                          ],
-                        ),
+                        appBar: appBar != null
+                            ? appBar
+                            : AppBar(
+                                backgroundColor: appBarBackgroundColorLocal,
+                                elevation: appBarElevation,
+                                automaticallyImplyLeading: false,
+                                title: title,
+                                actions: <Widget>[
+                                  if (trailing != null) ...[
+                                    trailing,
+                                  ],
+                                ],
+                              ),
                         body: Row(
                           children: <Widget>[
                             Expanded(
@@ -114,6 +123,7 @@ class ResponsiveScaffold extends StatelessWidget {
         if (constraints.maxWidth >= kTabletBreakpoint) {
           return Scaffold(
             key: scaffoldKey,
+            bottomNavigationBar: bottomNavigationBar,
             drawer: drawer == null
                 ? null
                 : Drawer(
@@ -121,18 +131,20 @@ class ResponsiveScaffold extends StatelessWidget {
                       child: drawer,
                     ),
                   ),
-            appBar: AppBar(
-              backgroundColor: appBarBackgroundColorLocal,
-              elevation: appBarElevation,
-              automaticallyImplyLeading: false,
-              title: title,
-              leading: _MenuButton(iconData: menuIcon),
-              actions: <Widget>[
-                if (trailing != null) ...[
-                  trailing,
-                ],
-              ],
-            ),
+            appBar: appBar != null
+                ? appBar
+                : AppBar(
+                    backgroundColor: appBarBackgroundColorLocal,
+                    elevation: appBarElevation,
+                    automaticallyImplyLeading: false,
+                    title: title,
+                    leading: _MenuButton(iconData: menuIcon),
+                    actions: <Widget>[
+                      if (trailing != null) ...[
+                        trailing,
+                      ],
+                    ],
+                  ),
             body: SafeArea(
               right: false,
               bottom: false,
@@ -169,6 +181,7 @@ class ResponsiveScaffold extends StatelessWidget {
           );
         }
         return Scaffold(
+          bottomNavigationBar: bottomNavigationBar,
           key: scaffoldKey,
           drawer: drawer == null
               ? null
@@ -184,21 +197,23 @@ class ResponsiveScaffold extends StatelessWidget {
                     child: endDrawer,
                   ),
                 ),
-          appBar: AppBar(
-            backgroundColor: appBarBackgroundColorLocal,
-            elevation: appBarElevation,
-            automaticallyImplyLeading: false,
-            leading: _MenuButton(iconData: menuIcon),
-            title: title,
-            actions: <Widget>[
-              if (trailing != null) ...[
-                trailing,
-              ],
-              if (endDrawer != null) ...[
-                _OptionsButton(iconData: endIcon),
-              ]
-            ],
-          ),
+          appBar: appBar != null
+              ? appBar
+              : AppBar(
+                  backgroundColor: appBarBackgroundColorLocal,
+                  elevation: appBarElevation,
+                  automaticallyImplyLeading: false,
+                  leading: _MenuButton(iconData: menuIcon),
+                  title: title,
+                  actions: <Widget>[
+                    if (trailing != null) ...[
+                      trailing,
+                    ],
+                    if (endDrawer != null) ...[
+                      _OptionsButton(iconData: endIcon),
+                    ]
+                  ],
+                ),
           body: body,
           floatingActionButton: floatingActionButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
