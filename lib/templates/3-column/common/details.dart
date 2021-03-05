@@ -4,9 +4,9 @@ import '../three_column_navigation.dart';
 
 class DetailsView extends StatelessWidget {
   const DetailsView({
-    Key key,
-    @required int listIndex,
-    @required DetailsWidget details,
+    Key? key,
+    required int listIndex,
+    required DetailsWidget details,
     this.previous,
     this.next,
     this.isLast = false,
@@ -18,13 +18,14 @@ class DetailsView extends StatelessWidget {
         _details = details,
         super(key: key);
 
+  // ignore: unused_field
   final int _listIndex;
   final DetailsWidget _details;
-  final VoidCallback previous, next;
+  final VoidCallback? previous, next;
   final bool showDetailsArrows;
   final bool isLast, isFirst;
   final bool automaticallyImplyLeading;
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +52,16 @@ class DetailsView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (_details?.title != null)
+                  if (_details.title != null)
                     Expanded(
                       child: Center(child: _details.title),
                     ),
                 ],
               ),
-        actions: _details?.actions,
+        actions: _details.actions,
       ),
       body: _details.child,
-      bottomNavigationBar: _details?.bottomAppBar,
+      bottomNavigationBar: _details.bottomAppBar,
     );
   }
 }

@@ -72,7 +72,7 @@ class _ListExampleState extends State<ListExample> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          _scaffoldKey.currentState.showSnackBar(SnackBar(
+          ScaffoldMessenger.of(_scaffoldKey.currentContext).showSnackBar(SnackBar(
             content: Text("Snackbar!"),
           ));
         },
@@ -92,6 +92,7 @@ class ExampleDetailsScreen extends StatelessWidget {
   })  : _items = items,
         super(key: key);
 
+  // ignore: unused_field
   final List<String> _items;
   final String row;
   final bool tablet;
