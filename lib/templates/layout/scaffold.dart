@@ -15,6 +15,7 @@ class ResponsiveScaffold extends StatelessWidget {
     this.kDesktopBreakpoint = 1440.0,
     this.appBarBackgroundColor,
     this.appBarElevation = 0.0,
+    this.hideMenuEverytime = false,
     this.appBar,
     this.bottomNavigationBar,
   });
@@ -43,6 +44,8 @@ class ResponsiveScaffold extends StatelessWidget {
 
   final double appBarElevation;
 
+  final bool hideMenuEverytime;
+
   final Key? scaffoldKey;
 
   @override
@@ -54,7 +57,7 @@ class ResponsiveScaffold extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (_, constraints) {
-        if (constraints.maxWidth >= kDesktopBreakpoint) {
+        if (constraints.maxWidth >= kDesktopBreakpoint && hideMenuEverytime == false) {
           return Material(
             child: Stack(
               children: <Widget>[
