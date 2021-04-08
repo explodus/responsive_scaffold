@@ -75,21 +75,11 @@ class ResponsiveScaffold extends StatelessWidget {
                     ],
                     Expanded(
                       child: Scaffold(
+                        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+                        floatingActionButton: floatingActionButton,
                         bottomNavigationBar: bottomNavigationBar,
                         key: scaffoldKey,
-                        appBar: appBar != null
-                            ? appBar as PreferredSizeWidget?
-                            : AppBar(
-                                backgroundColor: appBarBackgroundColorLocal,
-                                elevation: appBarElevation,
-                                automaticallyImplyLeading: false,
-                                title: title,
-                                actions: (<Widget?>[
-                                  if (trailing != null) ...[
-                                    trailing,
-                                  ],
-                                ]) as List<Widget>?,
-                              ),
+                        appBar: appBar as PreferredSizeWidget?,
                         body: Row(
                           children: <Widget>[
                             Expanded(
@@ -112,19 +102,14 @@ class ResponsiveScaffold extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (floatingActionButton != null) ...[
-                  Positioned(
-                    top: 100.0,
-                    left: _drawerWidth - 30,
-                    child: floatingActionButton!,
-                  )
-                ],
               ],
             ),
           );
         }
         if (constraints.maxWidth >= kTabletBreakpoint) {
           return Scaffold(
+            floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+            floatingActionButton: floatingActionButton,
             key: scaffoldKey,
             bottomNavigationBar: bottomNavigationBar,
             drawer: drawer == null
@@ -134,20 +119,7 @@ class ResponsiveScaffold extends StatelessWidget {
                       child: drawer!,
                     ),
                   ),
-            appBar: appBar != null
-                ? appBar as PreferredSizeWidget?
-                : AppBar(
-                    backgroundColor: appBarBackgroundColorLocal,
-                    elevation: appBarElevation,
-                    automaticallyImplyLeading: false,
-                    title: title,
-                    leading: _MenuButton(iconData: menuIcon),
-                    actions: (<Widget?>[
-                      if (trailing != null) ...[
-                        trailing,
-                      ],
-                    ]) as List<Widget>?,
-                  ),
+            appBar: appBar as PreferredSizeWidget?,
             body: SafeArea(
               right: false,
               bottom: false,
@@ -171,13 +143,6 @@ class ResponsiveScaffold extends StatelessWidget {
                       ],
                     ],
                   ),
-                  if (floatingActionButton != null) ...[
-                    Positioned(
-                      top: 10.0,
-                      left: 10.0,
-                      child: floatingActionButton!,
-                    )
-                  ],
                 ],
               ),
             ),
@@ -200,23 +165,7 @@ class ResponsiveScaffold extends StatelessWidget {
                     child: endDrawer!,
                   ),
                 ),
-          appBar: appBar != null
-              ? appBar as PreferredSizeWidget?
-              : AppBar(
-                  backgroundColor: appBarBackgroundColorLocal,
-                  elevation: appBarElevation,
-                  automaticallyImplyLeading: false,
-                  leading: _MenuButton(iconData: menuIcon),
-                  title: title,
-                  actions: (<Widget?>[
-                    if (trailing != null) ...[
-                      trailing,
-                    ],
-                    if (endDrawer != null) ...[
-                      _OptionsButton(iconData: endIcon),
-                    ]
-                  ]) as List<Widget>?,
-                ),
+          appBar: appBar as PreferredSizeWidget?,
           body: body,
           floatingActionButton: floatingActionButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
