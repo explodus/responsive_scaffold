@@ -9,6 +9,7 @@ class ResponsiveScaffold extends StatelessWidget {
     this.body,
     this.trailing,
     this.floatingActionButton,
+    this.persistentFooterButtons,
     this.menuIcon,
     this.endIcon,
     this.kTabletBreakpoint = 720.0,
@@ -34,6 +35,8 @@ class ResponsiveScaffold extends StatelessWidget {
 
   final Widget? floatingActionButton;
 
+  final List<Widget>? persistentFooterButtons;
+
   final Color? appBarBackgroundColor;
 
   final kTabletBreakpoint;
@@ -50,11 +53,6 @@ class ResponsiveScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color appBarBackgroundColorLocal = appBarBackgroundColor ??
-        (Theme.of(context).brightness == Brightness.dark
-            ? Theme.of(context).scaffoldBackgroundColor
-            : Theme.of(context).primaryColor);
-
     return LayoutBuilder(
       builder: (_, constraints) {
         if (constraints.maxWidth >= kDesktopBreakpoint && hideMenuEverytime == false) {
@@ -77,6 +75,7 @@ class ResponsiveScaffold extends StatelessWidget {
                       child: Scaffold(
                         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                         floatingActionButton: floatingActionButton,
+                        persistentFooterButtons: persistentFooterButtons,
                         bottomNavigationBar: bottomNavigationBar,
                         key: scaffoldKey,
                         appBar: appBar as PreferredSizeWidget?,
@@ -110,6 +109,7 @@ class ResponsiveScaffold extends StatelessWidget {
           return Scaffold(
             floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
             floatingActionButton: floatingActionButton,
+            persistentFooterButtons: persistentFooterButtons,
             key: scaffoldKey,
             bottomNavigationBar: bottomNavigationBar,
             drawer: drawer == null
@@ -169,6 +169,7 @@ class ResponsiveScaffold extends StatelessWidget {
           body: body,
           floatingActionButton: floatingActionButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          persistentFooterButtons: persistentFooterButtons,
         );
       },
     );
