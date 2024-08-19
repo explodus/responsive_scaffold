@@ -65,7 +65,7 @@ class LayoutExample extends StatelessWidget {
         onPressed: () {},
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text('Close'),
           onPressed: () {
             Navigator.pop(context);
@@ -74,7 +74,7 @@ class LayoutExample extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         onPressed: () {},
       ),
     );

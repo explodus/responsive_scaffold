@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
@@ -50,14 +48,12 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
 
   void _setUpController(bool init) {
     controller = AutoScrollController(
-      viewportBoundaryGetter: () =>
-          Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
+      viewportBoundaryGetter: () => Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
       axis: Axis.vertical,
     );
   }
 
-  Future _scrollToIndex(int value,
-      {AutoScrollPosition position = AutoScrollPosition.middle}) async {
+  Future _scrollToIndex(int value, {AutoScrollPosition position = AutoScrollPosition.middle}) async {
     try {
       controller!.scrollToIndex(
         value,
@@ -163,8 +159,7 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                         }
                       },
                     ),
-                    bottomNavigationBar:
-                        widget.sections[_sectionIndex].bottomAppBar,
+                    bottomNavigationBar: widget.sections[_sectionIndex].bottomAppBar,
                   ),
                 ),
                 Expanded(
@@ -175,11 +170,9 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                           scaffoldKey: _scaffoldKey,
                           automaticallyImplyLeading: false,
                           isFirst: _listIndex == 0,
-                          isLast: widget.sections[_sectionIndex].itemCount ==
-                              _listIndex + 1,
+                          isLast: widget.sections[_sectionIndex].itemCount == _listIndex + 1,
                           listIndex: _listIndex,
-                          details: widget.sections[_sectionIndex]
-                              .getDetails(context, _listIndex),
+                          details: widget.sections[_sectionIndex].getDetails(context, _listIndex),
                           showDetailsArrows: widget.showDetailsArrows,
                           previous: () {
                             if (mounted)
@@ -235,12 +228,10 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                   });
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) {
-                    final _details = widget.sections[_sectionIndex]
-                        .getDetails(context, _listIndex);
+                    final _details = widget.sections[_sectionIndex].getDetails(context, _listIndex);
                     return DetailsView(
                       isFirst: _listIndex == 0,
-                      isLast: widget.sections.isNotEmpty &&
-                          _listIndex == widget.sections.length - 1,
+                      isLast: widget.sections.isNotEmpty && _listIndex == widget.sections.length - 1,
                       listIndex: _listIndex,
                       details: _details,
                       showDetailsArrows: false,
@@ -321,8 +312,7 @@ class MainSection {
   final int itemCount;
   final Text label;
 
-  final Widget Function(BuildContext context, int index, bool selected)
-      itemBuilder;
+  final Widget Function(BuildContext context, int index, bool selected) itemBuilder;
 
   final DetailsWidget Function(BuildContext context, int index) getDetails;
 }

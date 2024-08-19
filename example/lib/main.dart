@@ -22,9 +22,9 @@ void _setTargetPlatformForDesktop() {
   } else if (Platform.isLinux || Platform.isWindows) {
     targetPlatform = TargetPlatform.android;
   }
-  if (targetPlatform != null) {
-    debugDefaultTargetPlatformOverride = targetPlatform;
-  }
+  // if (targetPlatform != null) {
+  //   debugDefaultTargetPlatformOverride = targetPlatform;
+  // }
 }
 
 class MyApp extends StatelessWidget {
@@ -68,8 +68,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _goToScreen(BuildContext context, Widget child) =>
-      Navigator.of(context).pushReplacement(
+  void _goToScreen(BuildContext context, Widget child) => Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => child),
       );
 }
