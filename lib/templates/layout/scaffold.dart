@@ -89,6 +89,10 @@ class ResponsiveScaffold extends StatelessWidget {
                                 width: _drawerWidth,
                                 child: Drawer(
                                   elevation: 3.0,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                                  ),
                                   child: SafeArea(
                                     child: endDrawer!,
                                   ),
