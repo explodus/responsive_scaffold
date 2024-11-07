@@ -93,9 +93,7 @@ class ResponsiveScaffold extends StatelessWidget {
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
                                   ),
-                                  child: SafeArea(
-                                    child: endDrawer!,
-                                  ),
+                                  child: SafeArea(child: endDrawer!),
                                 ),
                               ),
                             ],
